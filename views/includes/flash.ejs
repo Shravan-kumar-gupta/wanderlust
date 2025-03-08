@@ -1,0 +1,20 @@
+
+<%if(success && success.length > 0){%>
+<div class="row">
+    <div class=" col-md-6 mx-auto alert alert-success alert-dismissible fade show bg-dark bg-gradient text-white icon-link-hover "
+         role="alert" >
+        <%=success%>
+        <i class="btn btn-close fa-solid fa-xmark text-white outline-none" data-bs-dismiss="alert" aria-label="Close"></i>
+    </div>
+</div>
+<%}%>
+
+<%if(failure && failure.length > 0){%>
+    <div class="row">
+        <div class=" col-md-6 mx-auto alert alert-success alert-dismissible fade show bg-danger text-white icon-link-hover "
+             role="alert" >
+            <%=failure%>
+            <i class="btn btn-close fa-solid fa-xmark text-white outline-none" data-bs-dismiss="alert" aria-label="Close"></i>
+        </div>
+    </div>
+<%}%>
