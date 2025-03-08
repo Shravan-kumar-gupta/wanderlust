@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const User = require("../models/user.js");
 const passport = require("passport");
 const {saveRedirectUrl} = require("../middleware");
 
