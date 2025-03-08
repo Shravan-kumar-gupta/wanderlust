@@ -1,6 +1,5 @@
 if(process.env.NODE_ENV !== 'production') {
     require("dotenv").config();
-    // console.log("MongoDB Connection String:", process.env.ATLASDB_URL); // Debugging
 }
 const  express = require("express");
 const app = express();
@@ -21,13 +20,9 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/User.js");
 
-// const wrapAsync = require("./utils/wrapAsync");
-// const ExpressError = require("./utils/ExpressError.js");
-// const {reviewSchema } = require("./Schema");
 
 
 // Database Connection
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const dbUrl = process.env.ATLASDB_URL;
 async function main(){
     await mongoose.connect(dbUrl);
@@ -122,5 +117,3 @@ app.listen(port, () => {
     console.log("Server is listening on port " + port);
 }
 )
-// SkMongoAtlas@321
-//49.15.171.121/32

@@ -1,21 +1,20 @@
 const joi = require('joi')
-const Joi = require("joi");
 const {forbidden} = require("joi");
 
-module.exports.listingSchema = Joi.object({
-    listing: Joi.object({
-        title: Joi.string().required(),
-        description: Joi.string().required(),
-        location: Joi.string().required(),
-        country: Joi.string().required(),
-        price: Joi.number().required().min(0),
+module.exports.listingSchema = joi.object({
+    listing: joi.object({
+        title: joi.string().required(),
+        description: joi.string().required(),
+        location: joi.string().required(),
+        country: joi.string().required(),
+        price: joi.number().required().min(0),
 
         // Allow images to be optional for updates
-        image: Joi.alternatives().try(
-            Joi.array().items(
-                Joi.object({
-                    url: Joi.string().uri().required(),
-                    filename: Joi.string().required()
+        image: joi.alternatives().try(
+            joi.array().items(
+                joi.object({
+                    url: joi.string().uri().required(),
+                    filename: joi.string().required()
                 })
                 .min(0)
                 .allow(null)
