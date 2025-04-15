@@ -1,0 +1,138 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+    @media screen and (max-width: 768px){
+        .show-card{
+            width:100%;
+        }
+        .show-container .show-box .show-image-box{
+            display:block!important;
+            width: 100%;
+            height: auto !important;
+        }
+        .show-container .show-box .show-image-box .show-img{
+            width:100%;
+        }
+        .show-container .show-box .show-image-box .show-img img{
+            border-radius: 0 10px 10px 0 !important;
+        }
+        .show-container .show-box .show-image-box .show-img-2{
+            width:100%!important;
+            margin:10px auto;
+            display: block;
+        }
+        .show-container .show-box .show-image-box .show-img-2 div{
+            width:100%;
+            height:auto !important;
+            margin: 10px auto;
+        }
+        .leave-review-box{
+            width:100%!important;
+        }
+        .review-container{
+            display:block!important;
+        }
+        .review-container .card{
+            width: 100%!important;
+            margin:20px auto!important;
+        }
+    }
+</style>
+<body>
+        <div class="row mb-4 show-container">
+             <div class="col-12 mx-auto offset-2 show-box">
+                 <h3 class="text-center my-3 fw-bold "><%=listing.title%></h3>
+                 <div class="card show-card border-0">
+                     <div class="d-flex justify-content-between show-image-box" style="height: 55vh">
+                         <div class=" rounded-start show-img">
+                             <img src="<%=listing.image[0].url%>" class="card-img1 rounded-start" alt="listing_image">
+                         </div>
+                         <div class="d-flex flex-wrap show-img-2" style="width:36%">
+                             <div class="rounded-end" style="width:100%; height: 26.5vh">
+                                 <img  class="rounded-end" style="height: 100%; width:100%;" src="<%=listing.image[1].url%>" alt="listing_image"/>
+                             </div>
+                             <div class="rounded-end align-self-end" style="width:100%; height: 26.5vh">
+                                 <img  class="rounded-end" style="height: 100%; width:100%;" src="<%=listing.image[2].url%>" alt="listing_image"/>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="card-body">
+                         <div class="card-text">
+                             <i><strong>Created By  : </strong> &nbsp;</i>@<%= listing.owner?.username || "Unknown" %><br/><br>
+                             <i class="fa-solid fa-circle-info me-3"></i><%=listing.description%><br><br>
+                                 <i class="fa-solid fa-wallet me-3"></i> &#8377; <%=listing.price.toLocaleString("en-IN")%><br>
+                                 <i class="fa-solid fa-location-dot me-3"></i><%=listing.location%><br>
+                                 <i class="fa-solid fa-globe me-3"></i><%=listing.country%>
+                         </div>
+                         <div class="btns mb-3 d-flex justify-content-center ">
+                             <a href="/listings/<%= listing._id%>/edit" class="btn edit-btn">Edit </a>&nbsp;&nbsp;&nbsp;
+                             <form action="/listings/<%=listing._id%>?_method=DELETE" method="post">
+                                 <button class="btn btn-dark">Delete</button>
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+            <div class="col-8 mx-auto mb-3 leave-review-box">
+                <% if(currentUser){%>
+               <h4 class="text-center fw-bold text-secondary">Leave a Review</h4><hr>
+                <form action="/listings/<%=listing._id%>/reviews" method="POST" novalidate class="needs-validation">
+                    <br>
+                    <div>
+<!--                        <label for="rating" class="form-lab el"><b>Rating</b></label>-->
+<!--                        <input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range" required>-->
+                        <label for="rating" class="form-lab el">Rating</label>
+                        <fieldset class="starability-slot mt-3">
+                            <input type="radio"
+                                   id="no-rate"
+                                   class="input-no-rate"
+                                   name="review[rating]"
+                                   value="1"
+                                   checked aria-label="No rating." />
+                            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                            <label for="first-rate1" title="Terrible">1 star</label>
+                            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                            <label for="first-rate2" title="Not good">2 stars</label>
+                            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                            <label for="first-rate3" title="Average">3 stars</label>
+                            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                            <label for="first-rate4" title="Very good">4 stars</label>
+                            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                            <label for="first-rate5" title="Amazing">5 stars</label>
+                        </fieldset>
+
+                    </div>
+                    <div>
+                        <label for="comment" class="form-label">Comment</label>
+                        <textarea name="review[comment]" id="comment" cols="30" rows="3"  class="form-control" required></textarea>
+                        <div class="invalid-feedback">Please add some comments for review !</div>
+                    </div><br>
+                    <button class="btn btn-outline-dark">Submit</button>
+                </form>
+                <% } %>
+                <%if(listing.reviews.length>0){ %>
+                <p class="text-center my-4"><b>All Reviews here</b></p>
+                <div class="row d-flex justify-content-evenly review-container">
+                    <% for(review of listing.reviews) {%>
+                    <div class="card  text-bg-dark col-5 mb-5">
+                        <div class="card-header fs-5"><span style="font-size:13px">
+                             <i><%= review.author.username == "Sk_admin" ? "Web Owner" :"Esteemed Guest" %></i>
+                            </span>&nbsp;&nbsp;@<%= review.author.username%></div>
+                        <div class="card-body">
+<!--                            <h5 class="card-title">Jane Due</h5>-->
+                            <p class="card-text">
+                                <% for(let i=1; i<=review.rating; i++){%>
+                                    <span><i class="fa-solid fa-star text-warning"></i></span>
+                                <%}%>
+                            </p>
+                            <p class="card-text"><%=review.comment%></p>
+                        </div>
+                        <form method="post" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE">
+                            <button class="btn btn-sm btn-danger ms-3 mb-3">Delete</button>
+                        </form>
+                    </div>
+                    <%}%>
+                </div>
+                <%}%>
+            </div>
+        </div>
+</body>

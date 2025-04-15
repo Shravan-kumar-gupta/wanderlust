@@ -1,0 +1,67 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+    @media screen and (max-width: 768px) {
+        .form-container{
+            width:100%;
+            margin: 0 auto;
+        }
+        .form-inside{
+            width:100%;
+        }
+        .form-inside h3{
+            text-align:center;
+        }
+        .form-container .form-inside input{
+            font-size: 14px;
+        }
+     }
+</style>
+          <div class="row form-container">
+              <div class="col-6 mx-auto form-inside">
+                  <h3 class="my-4">Create a New Listing</h3>
+                  <form action="/listings" method="post"  novalidate class="needs-validation" enctype="multipart/form-data">
+                  <div class="mb-3">
+                          <label class="form-label" for="Title">Title</label>
+                          <input name="listing[title]" type="text" placeholder="Add a Catchy Title" class="form-control" id="Title" required/>
+                          <div class="valid-feedback">Title Looks Good!</div>
+                          <div class="invalid-feedback">Please enter the Title</div>
+                      </div>
+                      <div class="mb-3">
+                          <label class="form-label" for="Description">Description</label>
+                          <textarea name="listing[description]"  class="form-control" id="Description" required></textarea>
+                          <div class="invalid-feedback">Please enter a short description</div>
+                      </div>
+<!--                      <div class="mb-3">-->
+<!--                          <label class="form-label">Images</label>-->
+<!--                          <input name="listing[image][]" type="text" class="form-control" placeholder="Image URL 1" required/><br/>-->
+<!--                          <input name="listing[image][]" type="text" class="form-control" placeholder="Image URL 2"/><br/>-->
+<!--                          <input name="listing[image][]" type="text" class="form-control" placeholder="Image URL 3"/>-->
+<!--                      </div>-->
+                      <div class="mb-3">
+                          <label class="form-label">Images</label>
+                          <input name="listing[image]" type="file" class="form-control" placeholder="Image URL 1" required/><br/>
+                          <input name="listing[image]" type="file" class="form-control" placeholder="Image URL 2"/><br/>
+                          <input name="listing[image]" type="file" class="form-control" placeholder="Image URL 3"/>
+                      </div>
+
+                      <div class="row">
+                             <div class="mb-3 col-md-4">
+                                 <label class="form-label" for="price">price</label>
+                                 <input name="listing[price]" placeholder="1200" type="number"  class="form-control" required/>
+                                 <div class="invalid-feedback">Price should be valid</div>
+                             </div>
+                             <div class="mb-3 col-md-8">
+                                 <label class="form-label" for="Country">Country</label>
+                                 <input name="listing[country]" placeholder="India" type="text" id="Country" class="form-control" required/>
+                                 <div class="invalid-feedback">Country name should be valid</div>
+                             </div>
+                     </div>
+                      <div class="mb-3">
+                          <label class="form-label" for="location">location</label>
+                          <input name="listing[location]" placeholder="Jaipur,Rajhsthan" type="text" id="location" class="form-control" required/>
+                          <div class="invalid-feedback">Location should be valid</div>
+                      </div>
+                      <button type="submit" class="btn add-btn mx-auto">Add</button><br><br>
+                  </form>
+              </div>
+              </div>

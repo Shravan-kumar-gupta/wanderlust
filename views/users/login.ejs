@@ -1,0 +1,36 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+    @media screen and (max-width: 768px){
+        .login-container .login-box{
+            width: 100% !important;
+            /*background-color: #fe424d;*/
+        }
+        .login-container h1{
+            text-align: center;
+        }
+    }
+    .login-container form {
+        border: none !important;
+    }
+</style>
+<div class="row mt-3 login-container">
+    <div class="col-4 mx-auto login-box ">
+        <h1 class="my-5 text-warning">LogIn on <span class=" fw-bold text-danger">Wonderlust</span></h1>
+        <form action="/login" method="POST" novalidate class="needs-validation card">
+            <br>
+            <div class="mb-3">
+                <label class="form-label" for="username"><i class="fa-solid fa-user mx-2 "></i>Username</label>
+                <input name="username"  id="username" type="text" placeholder="@user" class="form-control"
+                       style="font-size: 14px"  required/>
+                <div class="invalid-feedback">Please enter the Registered Username!</div>
+            </div><br>
+            <div class="mb-3">
+                <label class="form-label" for="password"><i class="fa-solid fa-key mx-2"></i>Password</label>
+                <input name="password"  id="password" type="password" placeholder="*****" class="form-control"
+                       style="font-size: 14px"  required/>
+                <div class="invalid-feedback">Password required! </div>
+            </div>
+            <button class="btn btn-danger mt-2" style="display:block; margin: 0 auto">logIn</button>
+        </form>
+    </div>
+</div>
