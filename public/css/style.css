@@ -115,4 +115,12 @@ justify-content: center;
 }
 .card-text i:hover{
     color: #fe424d;
+<<<<<<< HEAD
 }
+=======
+}
+/*<img src="<%=listing.image%>" class="card-img-top show-img" alt="listing_image">-->*/
+/*<div class="show-img rounded">*/
+/*<img src="<%=listing.image%>" class="card-img-top" alt="listing_image">*/
+/*</div>*/
+>>>>>>> 21bac896e0361c20a24e6c3ebee173b60ea5ae16

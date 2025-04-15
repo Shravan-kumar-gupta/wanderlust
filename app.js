@@ -76,11 +76,14 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
+<<<<<<< HEAD
 app.use((req, res, next) => {
     console.log(req.user); // Log to check if the user is being correctly set
     res.locals.currentUser = req.user;
     next();
 });
+=======
+>>>>>>> 21bac896e0361c20a24e6c3ebee173b60ea5ae16
 
 // use static serialize and deserialize of model for passport session support
 passport.serializeUser(User.serializeUser());

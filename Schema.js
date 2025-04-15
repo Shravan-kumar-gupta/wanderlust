@@ -29,4 +29,8 @@ module.exports.reviewSchema  =  joi.object({
 
     }).required()
 })
+<<<<<<< HEAD
+=======
+// image : joi.string().allow("",null),
+>>>>>>> 21bac896e0361c20a24e6c3ebee173b60ea5ae16
 

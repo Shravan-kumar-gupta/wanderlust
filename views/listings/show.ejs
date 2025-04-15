@@ -1,4 +1,5 @@
 <% layout("/layouts/boilerplate.ejs") %>
+<<<<<<< HEAD
 <style>
     @media screen and (max-width: 768px){
         .show-card{
@@ -47,6 +48,18 @@
                              <img src="<%=listing.image[0].url%>" class="card-img1 rounded-start" alt="listing_image">
                          </div>
                          <div class="d-flex flex-wrap show-img-2" style="width:36%">
+=======
+<body>
+        <div class="row mb-4">
+             <div class="col-12 mx-auto offset-2 ">
+                 <h3 class="text-center my-3 fw-bold "><%=listing.title%></h3>
+                 <div class="card show-card border-0">
+                     <div class="d-flex justify-content-between" style="height: 55vh">
+                         <div class=" rounded-start show-img">
+                             <img src="<%=listing.image[0].url%>" class="card-img1 rounded-start" alt="listing_image">
+                         </div>
+                         <div class="d-flex flex-wrap" style="width:36%">
+>>>>>>> 21bac896e0361c20a24e6c3ebee173b60ea5ae16
                              <div class="rounded-end" style="width:100%; height: 26.5vh">
                                  <img  class="rounded-end" style="height: 100%; width:100%;" src="<%=listing.image[1].url%>" alt="listing_image"/>
                              </div>
@@ -72,7 +85,11 @@
                      </div>
                  </div>
              </div>
+<<<<<<< HEAD
             <div class="col-8 mx-auto mb-3 leave-review-box">
+=======
+            <div class="col-8 mx-auto mb-3">
+>>>>>>> 21bac896e0361c20a24e6c3ebee173b60ea5ae16
                 <% if(currentUser){%>
                <h4 class="text-center fw-bold text-secondary">Leave a Review</h4><hr>
                 <form action="/listings/<%=listing._id%>/reviews" method="POST" novalidate class="needs-validation">
@@ -111,7 +128,11 @@
                 <% } %>
                 <%if(listing.reviews.length>0){ %>
                 <p class="text-center my-4"><b>All Reviews here</b></p>
+<<<<<<< HEAD
                 <div class="row d-flex justify-content-evenly review-container">
+=======
+                <div class="row d-flex justify-content-evenly ">
+>>>>>>> 21bac896e0361c20a24e6c3ebee173b60ea5ae16
                     <% for(review of listing.reviews) {%>
                     <div class="card  text-bg-dark col-5 mb-5">
                         <div class="card-header fs-5"><span style="font-size:13px">
