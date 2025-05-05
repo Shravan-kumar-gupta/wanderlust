@@ -70,19 +70,3 @@ router.get("/:id/edit",
     wrapAsync(listingController.RenderEditForm)
 )
 module.exports = router;
-//
-// .put(                       //Update Route
-//     isLoggedIn,
-//     isOwner,
-//     upload.array('listing[image]'),(req, res, next) => {
-//         if (req.files) {
-//             req.body.listing.image = req.files.map(file => ({
-//                 url: file.path,
-//                 filename: file.filename
-//             }));
-//         }
-//         next();
-//     },
-//     validateListing,
-//     wrapAsync(listingController.UpdateListing)
-// )

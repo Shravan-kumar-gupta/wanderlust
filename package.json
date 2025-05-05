@@ -1,8 +1,4 @@
- {
-  "engines" : {
-    "node":">=18.0.0"
-  },
-  "name": "airbnbtherentalapp",
+ "name": "airbnbtherentalapp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
